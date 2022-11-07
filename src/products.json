@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1",
+    "name": "iphone14",
+    "descriprion": "Modern smart phone with high end technologies",
+    "normalPrice": "1200",
+    "discountPriceForTimeOfYear": {
+      "june": "1000",
+      "november": "1100",
+      "december": "1050"
+    },
+    "discountPriceForPastSale": {
+      "10000-20000": "1200",
+      "20001-30000": "1150",
+      "30001-40000": "1100",
+      "40001-50000": "1050"
+    },
+    "discountPriceForCustomer": {
+      "gigantti": "1100",
+      "verkokauppa": "1100",
+      "prisma": "1150"
+    }
+  },
+  {
+    "id": "2",
+    "name": "samsung",
+    "descriprion": "Modern smart phone with high end technologies",
+    "normalPrice": "1000",
+    "discountPriceForTimeOfYear": {
+      "june": "900",
+      "november": "899",
+      "december": "950"
+    },
+    "discountPriceForPastSale": {
+      "10000-20000": "900",
+      "20001-30000": "850",
+      "30001-40000": "850",
+      "40001-50000": "800"
+    },
+    "discountPriceForCustomer": {
+      "gigantti": "890",
+      "verkokauppa": "880",
+      "prisma": "800"
+    }
+  }
+]
