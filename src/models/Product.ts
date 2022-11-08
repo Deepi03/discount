@@ -7,7 +7,15 @@ export interface Product {
   discountPriceForPastSale: PriceForPastSale;
   discountPriceForCustomer: PriceForCustomer;
 }
-type TimeOfYear = "june" | "november" | "december";
+
+export interface DiscountedPriceResponse {
+  id: string;
+  name: string;
+  normalPrice: string;
+  discountedPrice: string;
+}
+
+export type TimeOfYear = "june" | "november" | "december";
 
 type PriceForTimeOfYear = Record<TimeOfYear, string>;
 
