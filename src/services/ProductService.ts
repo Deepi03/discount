@@ -1,9 +1,5 @@
 import { CustomError } from "../types/CustomError";
-import {
-  DiscountedPriceResponse,
-  Product,
-  TimeOfYear
-} from "../models/Product";
+import { DiscountedPriceResponse, TimeOfYear } from "../models/Product";
 import productsJson from "./../../products.json";
 
 export const product = async () => {
@@ -15,7 +11,7 @@ export const productFilterByTimeOfSale = async (
   id: string,
   timeofSale: TimeOfYear
 ): Promise<DiscountedPriceResponse> => {
-  const product = productsJson.filter(p => p.id);
+  const product = productsJson.filter(p => p.id === id);
   return {
     id: product[0].id,
     name: product[0].name,
