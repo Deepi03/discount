@@ -6,13 +6,14 @@ export interface Product {
   discountPriceForTimeOfYear: PriceForTimeOfYear;
   discountPriceForPastSale: PriceForPastSale;
   discountPriceForCustomer: PriceForCustomer;
+  customers: Customer[];
 }
 
 export interface DiscountedPriceResponse {
   id: string;
   name: string;
   normalPrice: string;
-  discountedPrice: string;
+  discountedPrice?: string;
 }
 
 export type TimeOfYear = "june" | "november" | "december";

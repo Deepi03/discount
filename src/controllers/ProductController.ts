@@ -1,21 +1,21 @@
-import { CustomError } from "../types/CustomError";
 import { Request, Response, Router } from "express";
 import { TimeOfYear } from "models/Product";
-import { product, productFilterByTimeOfSale } from "../services/ProductService";
+import {
+  getProducts,
+  getProductFilterByTimeOfSale
+} from "../services/ProductService";
 
-export const productId = async (req: Request, res: Response) => {
-  const products = await product();
-  console.log("controller ", products);
+export const getAllProducts = async (req: Request, res: Response) => {
+  const products = await getProducts();
   return res.send(products);
 };
 
-export const productsByTimeOfYear = async (req: Request, res: Response) => {
-  var timeSale = req.query.timeOfSale as TimeOfYear;
-  if (typeof timeSale != undefined) {
-    const products = await productFilterByTimeOfSale(req.params.id, timeSale);
-    console.log("controller ", products);
-    return res.json(products);
-  } else {
-    throw new CustomError(400, "Invalid input");
-  }
+export const getProductsByTimeOfYear = async (req: Request, res: Response) => {
+  const timeSale = req.query.timeOfSale;
+  const products = await getProductFilterByTimeOfSale(
+    req.params.id,
+    req.params.customerId,
+    timeSale as TimeOfYear
+  );
+  return res.json(products);
 };
