@@ -1,4 +1,7 @@
-import { getProductFilterByTimeOfSale } from "../../services/ProductService";
+import {
+  getFilteredProductByPastSale,
+  getProductFilterByTimeOfSale
+} from "../../services/ProductService";
 
 const expectedResponse = {
   id: "1",
@@ -10,11 +13,10 @@ const expectedResponseWithUndefinedCustomer = {
   id: "1",
   name: "iphone14",
   normalPrice: "1200",
-  message:
-    "If you are our valid customer u get the discount.So please enter ur customer id if there is one"
+  message: "Enter valid customer id to get discount"
 };
 
-describe("Test productService", () => {
+describe("Test productService time of sale", () => {
   test("Test productFilterByTimeOfSale", async () => {
     const response = await getProductFilterByTimeOfSale("1", "1", "june");
     expect(response).toStrictEqual(expectedResponse);
@@ -26,5 +28,17 @@ describe("Test productService", () => {
   test("Test productFilterByTimeOfSaleWithUndefinedProduct", async () => {
     const response = await getProductFilterByTimeOfSale("", "2", "june");
     expect(response).toBeUndefined;
+  });
+});
+
+describe("Test product service past sale", () => {
+  test("Test productFilterByPastSales", async () => {
+    const response = await getFilteredProductByPastSale("1", "2", 10000);
+    expect(response).toStrictEqual({
+      id: "1",
+      name: "iphone14",
+      normalPrice: "1200",
+      discountedPrice: "1200"
+    });
   });
 });

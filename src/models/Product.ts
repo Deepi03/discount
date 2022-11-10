@@ -1,3 +1,5 @@
+import { Customers } from "./Customers";
+
 export interface Product {
   id: string;
   name: string;
@@ -6,7 +8,7 @@ export interface Product {
   discountPriceForTimeOfYear: PriceForTimeOfYear;
   discountPriceForPastSale: PriceForPastSale;
   discountPriceForCustomer: PriceForCustomer;
-  customers: Customer[];
+  customers: Customers[];
 }
 
 export interface DiscountedPriceResponse {
@@ -20,7 +22,7 @@ export type TimeOfYear = "june" | "november" | "december";
 
 type PriceForTimeOfYear = Record<TimeOfYear, string>;
 
-type PastSalesAmount =
+export type PastSalesAmount =
   | "10000-20000"
   | "20001-30000"
   | "30001-40000"
