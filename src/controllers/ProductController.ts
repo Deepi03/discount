@@ -29,7 +29,6 @@ export const getDiscountPrice = async (
     const type = req.query.type as string;
     const value = req.query.value as string;
     if (type === "time_of_sale" && value) {
-      console.log("time of sale");
       const result = await getProductFilterByTimeOfSale(
         req.params.id,
         req.params.customerId,

@@ -1,4 +1,4 @@
-import { Customers } from "./Customers";
+import { Customer } from "./Customer";
 
 export interface Product {
   id: string;
@@ -7,8 +7,7 @@ export interface Product {
   normalPrice: string;
   discountPriceForTimeOfYear: PriceForTimeOfYear;
   discountPriceForPastSale: PriceForPastSale;
-  discountPriceForCustomer: PriceForCustomer;
-  customers: Customers[];
+  customers: Customer[];
 }
 
 export interface DiscountedPriceResponse {
@@ -29,6 +28,3 @@ export type PastSalesAmount =
   | "40001-50000";
 
 type PriceForPastSale = Record<PastSalesAmount, string>;
-
-type Customer = "gigantti" | "verkokauppa" | "prisma";
-type PriceForCustomer = Record<Customer, string>;

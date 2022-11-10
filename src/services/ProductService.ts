@@ -1,7 +1,7 @@
 import { CustomError } from "../types/CustomError";
+
 import { DiscountedPriceResponse, PastSalesAmount, TimeOfYear } from "../models/Product";
 import productsJson from "./../../products.json";
-
 
 /**
  * 
@@ -20,7 +20,6 @@ export const getProducts = async () => {
  * @param timeofSale 
  * @returns product with discounted price if valid product id,customer id and time of Sale given and throws error if product id is not valid and for invalid customer id and time of sale returns product with normal price 
  */
-
 export const getProductFilterByTimeOfSale = async (
   productId: string,
   customerId: string,
@@ -28,28 +27,29 @@ export const getProductFilterByTimeOfSale = async (
 ): Promise<DiscountedPriceResponse | CustomError> => {
   const product = productsJson.find(p => 
     p.id === productId
-  );  
+  ); 
+  var specialTimeOfYear:string[]= ["june","november","december"];
   if (!product) {
     return new CustomError(404, "Product id is not found");
   }  
 
-  if(timeofSale != "june" && timeofSale != "november" && timeofSale != "december"){
-   return {
-    id: product.id,
-    name: product.name,
-    normalPrice: product.normalPrice,
-    message:`Discount available only on ${Object.keys(product.discountPriceForTimeOfYear)}`
-  };
+  if(!specialTimeOfYear.includes(timeofSale)) {
+    return {
+      id: product.id,
+      name: product.name,
+      normalPrice: product.normalPrice,
+      message:`Discount available only on ${Object.keys(product.discountPriceForTimeOfYear)}`
+    };
   }
-  const isGivenCustomerMapToProduct =product.customers?.find(c => c.id === customerId);
+  const isGivenCustomerMapToProduct = product.customers?.find(c => c.id === customerId);
   // if product doesnt match with customer, return only normalPrice
   if (product && !isGivenCustomerMapToProduct) {
     return {
-    id: product.id,
-    name: product.name,
-    normalPrice: product.normalPrice,
-    message:"Enter valid customer id to get discount"
-  };
+      id: product.id,
+      name: product.name,
+      normalPrice: product.normalPrice,
+      message:"Enter valid customer id to get discount"
+    };
   }
   return {
     id: product.id,
@@ -66,7 +66,6 @@ export const getProductFilterByTimeOfSale = async (
  * @param pastSale 
  * @returns product with discounted price if valid product id,customer id and past sale given and throws error if product id is not valid and for invalid customer id and past sale returns product with normal price
  */
-
  export const getFilteredProductByPastSale = async(productId: string,
   customerId: string,
   pastSale: number) : Promise<DiscountedPriceResponse | CustomError> => {
@@ -76,26 +75,26 @@ export const getProductFilterByTimeOfSale = async (
   if (product) { 
     const isGivenCustomerMapToProduct =product.customers?.find(c => c.id === customerId);
     if (!isGivenCustomerMapToProduct) {
-    return {
-    id: product.id,
-    name: product.name,
-    normalPrice: product.normalPrice,
-    message:"Enter valid customer id to get discount"
-    };
+      return {
+        id: product.id,
+        name: product.name,
+        normalPrice: product.normalPrice,
+        message:"Enter valid customer id to get discount"
+      };
     }  
     
-    for(const [slab,price] of Object.entries(product.discountPriceForPastSale)){
+    for(const [slab,price] of Object.entries(product.discountPriceForPastSale)) {
       const slabvalue = slab as PastSalesAmount;
-       const startSale = parseInt(slab.split("-")[0]);
-       const endSale = parseInt(slab.split("-")[1]);
-        if(pastSale >= startSale && pastSale <= endSale){
-      return {
-        id:product.id,
-        name:product.name,
-        normalPrice:product.normalPrice,
-        discountedPrice:product.discountPriceForPastSale[slabvalue]
+      const startSale = parseInt(slab.split("-")[0]);
+      const endSale = parseInt(slab.split("-")[1]);
+        if(pastSale >= startSale && pastSale <= endSale) {
+          return {
+            id:product.id,
+            name:product.name,
+            normalPrice:product.normalPrice,
+            discountedPrice:product.discountPriceForPastSale[slabvalue]
+          }
       }
-    }
     }
   } 
   return new CustomError(404, "Product id is not found");

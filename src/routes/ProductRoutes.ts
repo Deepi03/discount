@@ -1,8 +1,9 @@
+import { Router } from "express";
+
 import {
   getAllProducts,
   getDiscountPrice
 } from "../controllers/ProductController";
-import { Router } from "express";
 
 const productsRoute = Router();
 

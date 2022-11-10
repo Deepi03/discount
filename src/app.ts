@@ -1,6 +1,6 @@
 import express from "express";
-
 import dotenv from "dotenv";
+
 import productsRoute from "./routes/ProductRoutes";
 import { errorHandler } from "../src/errorHandler/Error";
 
