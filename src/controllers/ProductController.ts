@@ -1,5 +1,6 @@
+import { Request, Response, NextFunction } from "express";
+
 import { CustomError } from "../types/CustomError";
-import { NextFunction, Request, Response } from "express";
 import { TimeOfYear } from "models/Product";
 import {
   getProducts,
