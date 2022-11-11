@@ -5,9 +5,9 @@
     "descriprion": "Modern smart phone with high end technologies",
     "normalPrice": "1200",
     "discountPriceForTimeOfYear": {
-      "june": "1000",
-      "november": "1100",
-      "december": "1150"
+      "mid-summer": "1000",
+      "thanksgiving": "1100",
+      "christmas": "1150"
     },
     "discountPriceForPastSale": {
       "10000-20000": "1200",
@@ -41,9 +41,9 @@
     "descriprion": "Modern smart phone with high end technologies",
     "normalPrice": "1000",
     "discountPriceForTimeOfYear": {
-      "june": "900",
-      "november": "899",
-      "december": "950"
+      "mid-summer": "900",
+      "thanksgiving": "899",
+      "christmas": "950"
     },
     "discountPriceForPastSale": {
       "10000-20000": "900",

@@ -18,15 +18,19 @@ const expectedResponseWithUndefinedCustomer = {
 
 describe("Test productService time of sale", () => {
   test("Test productFilterByTimeOfSale", async () => {
-    const response = await getProductFilterByTimeOfSale("1", "1", "june");
+    const response = await getProductFilterByTimeOfSale("1", "1", "mid-summer");
     expect(response).toStrictEqual(expectedResponse);
   });
   test("Test productFilterByTimeOfSaleWithUndefinedCustomer", async () => {
-    const response = await getProductFilterByTimeOfSale("1", "", "june");
+    const response = await getProductFilterByTimeOfSale("1", "", "mid-summer");
     expect(response).toStrictEqual(expectedResponseWithUndefinedCustomer);
   });
   test("Test productFilterByTimeOfSaleWithUndefinedProduct", async () => {
-    const response = await getProductFilterByTimeOfSale("", "2", "june");
+    const response = await getProductFilterByTimeOfSale(
+      "",
+      "2",
+      "thanksgiving"
+    );
     expect(response).toBeUndefined;
   });
 });

@@ -15,7 +15,7 @@ Following tools required,
 
 ## Endpoints
 * get all products - `localhost:8000/products`
-* get products with discount price during particular time of year - `localhost:8000/products/1/customers/1?type=time_of_sale&value=june`
+* get products with discount price during particular time of year - `localhost:8000/products/1/customers/1?type=time_of_sale&value=mid-summer`
 * get products with discount
 price based on past sales -
 `localhost:8000/products/1/customers/1?type=past_sale&value=10000`
@@ -25,12 +25,12 @@ price based on past sales -
  * productId : 1 or 2
  * customerId : 1 or 2 or 3
  * type = time_of_sale or past_sale
- * For time_of_sale : `value = june or november or december`    
- * For past_sale :
+ * For time_of_sale(Special occasion of the year) : `value = mid-summer or thanksgiving or christmas`    
+ * For past_sale(Amount of sale range) :
   `value =  10000-20000 or 20001-30000 or 30001-40000 or 40001-50000`
  
  ### Output 
-type = time _of_sale & value = june
+type = time _of_sale & value = mid-summer
 
  `{
 "id": "1",
@@ -39,7 +39,7 @@ type = time _of_sale & value = june
 "discountedPrice": "1000"
 }`
 
-type = time _of_sale & value = november
+type = time _of_sale & value = thanksgiving
 
 `{
 "id": "1",
@@ -48,7 +48,7 @@ type = time _of_sale & value = november
 "discountedPrice": "1100"
 }`
 
-type = time _of_sale & value = december
+type = time _of_sale & value = thanksgiving
 
 `
 {

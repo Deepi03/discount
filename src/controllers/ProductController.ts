@@ -18,7 +18,7 @@ export const getAllProducts = async (req: Request, res: Response) => {
  * @param res 
  * @param nxt 
  * @returns discount resposne if query parameters are valid else throw error
- * for example: ?type=time_of_sale&value=june
+ * for example: ?type=time_of_sale&value=mid-summer
  */
 export const getDiscountPrice = async (
   req: Request,

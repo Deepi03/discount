@@ -17,7 +17,7 @@ export interface DiscountedPriceResponse {
   discountedPrice?: string;
 }
 
-export type TimeOfYear = "june" | "november" | "december";
+export type TimeOfYear = "mid-summer" | "thanksgiving" | "christmas";
 
 type PriceForTimeOfYear = Record<TimeOfYear, string>;
 

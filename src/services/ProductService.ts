@@ -28,7 +28,7 @@ export const getProductFilterByTimeOfSale = async (
   const product = productsJson.find(p => 
     p.id === productId
   ); 
-  var specialTimeOfYear:string[]= ["june","november","december"];
+  var specialTimeOfYear:string[]= ["mid-summer","thanksgiving","christmas"];
   if (!product) {
     return new CustomError(404, "Product id is not found");
   }  
